@@ -1,54 +1,54 @@
 # AutoScholar Implementation Plan
 
-AutoScholar is a health research assistant that uses specialized agents to search for and summarize medical literature. It leverages Ollama (gemma3:1b) for reasoning and Streamlit for the interface.
+AutoScholar is defined as a health research assistant where specialized agents are utilized to search for and summarize medical literature. Ollama (gemma3:1b) is leveraged for reasoning and Streamlit is used for the interface.
 
 ## Proposed Changes
 
 ### Project Structure
-We will create the following structure:
-- app.py: Main Streamlit application.
-- agents/searcher.py: Searcher agent using arXiv API.
+The project is structured as follows:
+- app.py: Central Streamlit application.
+- agents/searcher.py: Searcher agent implementation using the arXiv API.
 - agents/summarizer.py: Summarizer agent implementation.
-- database/vector_store.py: Simple vector search using ChromaDB.
+- database/vector_store.py: Vector search functionality using ChromaDB.
 - README.md: Project overview and setup instructions.
-- AGENTS.md: Detailed documentation for the searcher and summarizer agents.
+- AGENTS.md: Documentation for agent roles and coordination logic.
 - requirements.txt: Project dependencies.
 
 ---
 
 ### Components
 
-#### [NEW] [requirements.txt](file:///home/pdhanesh/code/auto-scholar/requirements.txt)
-Define dependencies: `streamlit`, `ollama`, `chromadb`, `arxiv`.
+#### [requirements.txt](file:///home/pdhanesh/code/auto-scholar/requirements.txt)
+Dependencies are defined, including `streamlit`, `ollama`, `chromadb`, and `arxiv`.
 
-#### [NEW] [vector_store.py](file:///home/pdhanesh/code/auto-scholar/database/vector_store.py)
-A class to handle document storage and retrieval using ChromaDB.
+#### [vector_store.py](file:///home/pdhanesh/code/auto-scholar/database/vector_store.py)
+Document storage and retrieval are handled via a class using ChromaDB.
 
-#### [NEW] [searcher.py](file:///home/pdhanesh/code/auto-scholar/agents/searcher.py)
-An agent that uses the `arxiv` API to find and download relevant medical/health research papers.
+#### [searcher.py](file:///home/pdhanesh/code/auto-scholar/agents/searcher.py)
+Relevant medical and health research papers are found and downloaded using the arXiv API.
 
-#### [NEW] [summarizer.py](file:///home/pdhanesh/code/auto-scholar/agents/summarizer.py)
-An agent that uses `gemma3:1b` via Ollama to summarize the findings.
+#### [summarizer.py](file:///home/pdhanesh/code/auto-scholar/agents/summarizer.py)
+Findings are summarized using gemma3:1b via Ollama.
 
-#### [NEW] [app.py](file:///home/pdhanesh/code/auto-scholar/app.py)
-The UI to coordinate the agents and display results.
+#### [app.py](file:///home/pdhanesh/code/auto-scholar/app.py)
+Agent coordination and result display are managed by the UI.
 
-#### [NEW] [README.md](file:///home/pdhanesh/code/auto-scholar/README.md)
-Project overview, installation guide, and usage instructions.
+#### [README.md](file:///home/pdhanesh/code/auto-scholar/README.md)
+A project overview, installation guide, and usage instructions are provided.
 
-#### [NEW] [AGENTS.md](file:///home/pdhanesh/code/auto-scholar/AGENTS.md)
-Documentation of agent roles, prompts, and coordination logic.
+#### [AGENTS.md](file:///home/pdhanesh/code/auto-scholar/AGENTS.md)
+Agent roles, prompts, and coordination logic are documented.
 
 ---
 
 ## Verification Plan
 
 ### Automated Tests
-- Run `python -m agents.searcher` (with a test main) to verify search results.
-- Run `python -m agents.summarizer` (with a test main) to verify LLM connection.
-- Run `python -m database.vector_store` to verify ChromaDB storage.
+- Search results are verified by executing `python -m agents.searcher`.
+- The LLM connection is confirmed by executing `python -m agents.summarizer`.
+- ChromaDB storage is validated by executing `python -m database.vector_store`.
 
 ### Manual Verification
-- Launch Streamlit UI: `streamlit run app.py`.
-- Search for a specific medical topic (e.g., "benefits of Vitamin D").
-- Verify that the searcher finds results, the summarizer summarizes them, and they are saved/retrieved from the vector store.
+- The Streamlit UI is launched via `streamlit run app.py`.
+- A search for a specific medical topic (e.g., "benefits of Vitamin D") is performed.
+- Results are inspected to ensure they are found, summarized, and correctly retrieved from the vector store.
