@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env
+
+# Database
+chroma_db/
+
+# Streamlit
+.streamlit/
+
+# OS/IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Local data
+test_ranking.py
+docs/implementation_plan.md
